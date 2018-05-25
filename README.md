@@ -12,7 +12,7 @@ For information on how to configure Azure Active Directory refer - [https://docs
 
   **Step 1: Install the package**
 ```bash
-npm i ms-adal-angular6
+npm i microsoft-adal-angular6
 ```
 Also add it to your dependencies section in package.json so that it is restored when you do an npm install.
 
@@ -20,7 +20,7 @@ Also add it to your dependencies section in package.json so that it is restored 
 
  In the root module of your application, import the MsAdalModule module.
 ```bash
-import { MsAdalAngular6Module } from 'ms-adal-angular6';
+import { MsAdalAngular6Module } from 'microsoft-adal-angular6';
 ```
 Configure Adal options while importing the module.
 ```bash
@@ -53,7 +53,7 @@ For a list of all available adal configuration options, refer - [https://github.
 
 Import AuthenticationGuard and add it as a provider in your root module.
 ```bash
-import { AuthenticationGuard } from 'ms-adal-angular6';
+import { AuthenticationGuard } from 'microsoft-adal-angular6';
 ```
 
 ```bash
