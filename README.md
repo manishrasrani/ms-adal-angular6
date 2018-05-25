@@ -47,7 +47,7 @@ imports: [
 ```
 For a list of all available adal configuration options, refer - [https://github.com/AzureAD/azure-activedirectory-library-for-js/blob/dev/lib/adal.js](https://github.com/AzureAD/azure-activedirectory-library-for-js/blob/dev/lib/adal.js)
 
-**Step 3: Secure indivisual routes**
+**Step 3: Secure individual routes**
 
  Use the AuthenticationGuard to secure indivuadual routes in your application. This ensures that users navigating to them must be authenticated with AAD to view them.
 
