@@ -1,0 +1,28 @@
+{
+  "name": "microsoft-adal-angular6",
+  "version": "0.0.1",
+  "description": "This is a wrapper library for Angular 6 modules over Microsoft ADAL (Azure Active Directory Authentication Library)",
+  "author": {
+    "name": "Manish Ramchand"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/manishrasrani/ms-adal-angular6"
+  },
+  "keywords": [
+    "adal",
+    "angular6",
+    "adal angular",
+    "azure active directory",
+    "AAD authentication"
+  ],
+  "private": false,
+  "peerDependencies": {
+    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
+  },
+  "dependencies": {
+    "adal-angular": "^1.0.15",
+    "@types/adal": "^1.0.29"    
+  }
+}
