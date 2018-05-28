@@ -1,6 +1,6 @@
 {
   "name": "microsoft-adal-angular6",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "This is a wrapper library for Angular 6 modules over Microsoft ADAL (Azure Active Directory Authentication Library)",
   "author": {
     "name": "Manish Ramchand"
