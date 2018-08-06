@@ -111,7 +111,7 @@ export class MsAdalAngular6Service {
     return this.context.getCachedToken(this.adalConfig.clientId);
   }
 
-  public get isAuthenticated() {
-    return this.userInfo && this.accessToken;
+  public get isAuthenticated(): boolean {
+    return (this.userInfo && this.accessToken) ? true : false;
   }
 }
