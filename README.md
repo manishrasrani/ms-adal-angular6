@@ -1,5 +1,10 @@
 # Active Directory Authentication Library (ADAL) for Angular6
 
+This is a fork from [https://github.com/manishrasrani/ms-adal-angular6](https://github.com/manishrasrani/ms-adal-angular6).
+Changes in this version:
+* Replace @types/adal with @types/adal-angular
+* Implement acquireTokenRedirect to handle Azure Multi-Factor Authentication
+
 This is a wrapper library for Angular 6 modules over Microsoft ADAL (Azure Active Directory Authentication Library) - [https://github.com/AzureAD/azure-activedirectory-library-for-js](https://github.com/AzureAD/azure-activedirectory-library-for-js) that helps you integrate your web app with Microsoft's AAD (Azure Active Directory) for authentication scenarios.
 
 Working example at [https://github.com/manishrasrani/ms-adal-angular6-example](https://github.com/manishrasrani/ms-adal-angular6-example)
