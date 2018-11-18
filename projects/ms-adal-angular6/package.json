@@ -22,7 +22,7 @@
     "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
   },
   "dependencies": {
-    "adal-angular": "^1.0.15",
-    "@types/adal": "^1.0.29"    
+    "@types/adal-angular": "^1.0.1",
+    "adal-angular": "^1.0.17"
   }
 }
