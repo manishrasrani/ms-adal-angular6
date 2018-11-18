@@ -1,4 +1,3 @@
-/// <reference path='./../../../node_modules/@types/adal/index.d.ts'/>
 import { Injectable, Inject } from '@angular/core';
 import { Observable, bindCallback } from 'rxjs';
 import * as adalLib from 'adal-angular';
@@ -7,11 +6,11 @@ import * as adalLib from 'adal-angular';
   providedIn: 'root'
 })
 export class MsAdalAngular6Service {
-  private context: adal.AuthenticationContext;
+  private context: adalLib;
 
   constructor(@Inject('adalConfig') private adalConfig: any) {
     this.context = adalLib.inject(adalConfig);
-    this.handleCallback();
+    this.handleWindowCallback();
   }
 
   public get LoggedInUserEmail() {
@@ -82,6 +81,12 @@ export class MsAdalAngular6Service {
     }
   }
 
+  public acquireTokenRedirect(url: string, extraQueryParameters?: string | null, claims?: string | null) {
+    const _this = this;
+    let resource = _this.GetResourceForEndpoint(url);
+    this.context.acquireTokenRedirect(resource, extraQueryParameters, claims);    
+  }
+
   public getToken(url: string): string {
 
     const resource = this.context.getResourceForEndpoint(url);
@@ -99,7 +104,7 @@ export class MsAdalAngular6Service {
     }
   }
 
-  handleCallback() {
+  handleWindowCallback() {
     this.context.handleWindowCallback();
   }
 
