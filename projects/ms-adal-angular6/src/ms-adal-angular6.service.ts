@@ -93,9 +93,9 @@ export class MsAdalAngular6Service {
     const storage = this.adalConfig.cacheLocation;
     let key;
     if (resource) {
-      key = 'adal.access.token.key' + resource;
+      key = `${this.context.CONSTANTS.STORAGE.ACCESS_TOKEN_KEY}${resource}`;
     } else {
-      key = 'adal.idtoken';
+      key = `${this.context.CONSTANTS.STORAGE.IDTOKEN}`;
     }
     if (storage === 'localStorage') {
       return localStorage.getItem(key);
