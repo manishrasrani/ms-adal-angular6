@@ -1,13 +1,7 @@
-# Active Directory Authentication Library (ADAL) for Angular6
+# Active Directory Authentication Library (ADAL) for Angular 6+ (Angular 6.X.X and Angular 7.X.X)
 
-This is a fork from [https://github.com/manishrasrani/ms-adal-angular6](https://github.com/manishrasrani/ms-adal-angular6).
-Changes in this version:
-* Replace @types/adal with @types/adal-angular
-* Implement acquireTokenRedirect to handle Azure Multi-Factor Authentication
+This is a wrapper library for Angular 6+ (Angular 6.X.X and Angular 7.X.X) modules over Microsoft ADAL (Azure Active Directory Authentication Library) - [https://github.com/AzureAD/azure-activedirectory-library-for-js](https://github.com/AzureAD/azure-activedirectory-library-for-js) that helps you integrate your web app with Microsoft's AAD (Azure Active Directory) for authentication scenarios.
 
-___
-
-This is a wrapper library for Angular 6 modules over Microsoft ADAL (Azure Active Directory Authentication Library) - [https://github.com/AzureAD/azure-activedirectory-library-for-js](https://github.com/AzureAD/azure-activedirectory-library-for-js) that helps you integrate your web app with Microsoft's AAD (Azure Active Directory) for authentication scenarios.
 
 Working example at [https://github.com/manishrasrani/ms-adal-angular6-example](https://github.com/manishrasrani/ms-adal-angular6-example)
 
@@ -97,12 +91,25 @@ constructor(private adalSvc: MsAdalAngular6Service) {
     });
 ```
 
-**Step 5 (Optional): Getting logged-in user info**
+**Step 5 (Optional): Other properties and methods**
 
-At any point in you application, to get the logged-in user info, use
+Based on your application needs you could use the below supported properties and methods of adalSvc - 
 ```bash
-this.adalSvc.userInfo
+this.adalSvc.userInfo // Gives you the complete user object with various properties about the logged in user
 ```
+```bash
+this.adalSvc.LoggedInUserEmail // Gets the LoggedInUserEmail
+```
+```bash
+this.adalSvc.LoggedInUserName // Gets the LoggedInUserName
+```
+```bash
+this.adalSvc.RenewToken() // Renews the AAD token
+```
+```bash
+this.adalSvc.logout() // Logs out the signed in user
+```
+
 
 With these steps your application should be up and running with ADAL. 
 
