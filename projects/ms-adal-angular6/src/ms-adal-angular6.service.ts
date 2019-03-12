@@ -10,7 +10,10 @@ export class MsAdalAngular6Service {
   private context: adal.AuthenticationContext;
 
   constructor(@Inject('adalConfig') private adalConfig: any) {
-    this.context = adalLib.inject(adalConfig);
+    if (typeof adalConfig === 'function') {
+      this.adalConfig = adalConfig();
+    } 
+    this.context = adalLib.inject(this.adalConfig);
     this.handleCallback();
   }
 
