@@ -5,6 +5,7 @@
   "author": {
     "name": "Manish Ramchand"
   },
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/manishrasrani/ms-adal-angular6"
