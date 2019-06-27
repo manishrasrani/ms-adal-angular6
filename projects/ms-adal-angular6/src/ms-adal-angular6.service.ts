@@ -1,4 +1,3 @@
-/// <reference path='./../../../node_modules/@types/adal/index.d.ts'/>
 import { Injectable, Inject } from '@angular/core';
 import { Observable, bindCallback } from 'rxjs';
 import * as adalLib from 'adal-angular';
@@ -7,14 +6,11 @@ import * as adalLib from 'adal-angular';
   providedIn: 'root'
 })
 export class MsAdalAngular6Service {
-  private context: adal.AuthenticationContext;
+  private context: adalLib;
 
   constructor(@Inject('adalConfig') private adalConfig: any) {
-    if (typeof adalConfig === 'function') {
-      this.adalConfig = adalConfig();
-    } 
-    this.context = adalLib.inject(this.adalConfig);
-    this.handleCallback();
+    this.context = adalLib.inject(adalConfig);
+    this.handleWindowCallback();
   }
 
   public get LoggedInUserEmail() {
@@ -85,15 +81,21 @@ export class MsAdalAngular6Service {
     }
   }
 
+  public acquireTokenRedirect(url: string, extraQueryParameters?: string | null, claims?: string | null) {
+    const _this = this;
+    let resource = _this.GetResourceForEndpoint(url);
+    this.context.acquireTokenRedirect(resource, extraQueryParameters, claims);    
+  }
+
   public getToken(url: string): string {
 
     const resource = this.context.getResourceForEndpoint(url);
     const storage = this.adalConfig.cacheLocation;
     let key;
     if (resource) {
-      key = 'adal.access.token.key' + resource;
+      key = `${this.context.CONSTANTS.STORAGE.ACCESS_TOKEN_KEY}${resource}`;
     } else {
-      key = 'adal.idtoken';
+      key = `${this.context.CONSTANTS.STORAGE.IDTOKEN}`;
     }
     if (storage === 'localStorage') {
       return localStorage.getItem(key);
@@ -102,7 +104,7 @@ export class MsAdalAngular6Service {
     }
   }
 
-  handleCallback() {
+  handleWindowCallback() {
     this.context.handleWindowCallback();
   }
 

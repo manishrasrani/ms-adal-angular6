@@ -2,6 +2,7 @@
 
 This is a wrapper library for Angular 6+ (Angular 6.X.X and Angular 7.X.X) modules over Microsoft ADAL (Azure Active Directory Authentication Library) - [https://github.com/AzureAD/azure-activedirectory-library-for-js](https://github.com/AzureAD/azure-activedirectory-library-for-js) that helps you integrate your web app with Microsoft's AAD (Azure Active Directory) for authentication scenarios.
 
+
 Working example at [https://github.com/manishrasrani/ms-adal-angular6-example](https://github.com/manishrasrani/ms-adal-angular6-example)
 
 ___
