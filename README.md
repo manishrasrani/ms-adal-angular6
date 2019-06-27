@@ -46,6 +46,32 @@ imports: [
   ---
 })
 ```
+
+In case you need to set configuration values dynamically at runtime, you can also pass a function:
+```typescript
+
+export function getAdalConfig() {
+  return {
+      tenant: '<YOUR TENANT>',
+      clientId: '<YOUR CLIENT / APP ID>',
+      redirectUri: window.location.origin,
+      endpoints: { 
+        "https://localhost/Api/": "xxx-bae6-4760-b434-xxx",
+      },
+      navigateToLoginRequestUrl: false,
+      cacheLocation: '<localStorage / sessionStorage>',
+    };
+}
+
+@NgModule({
+imports: [
+    MsAdalAngular6Module.forRoot(getAdalConfig),
+  ],
+})
+```
+
+This might be the case if you need to pass `window.location.origin` as `redirectUri`, since the Angular AOT compiler applies a [special behavior](https://github.com/manishrasrani/ms-adal-angular6/issues/7) when compiling @Decorators.
+
 For a list of all available adal configuration options, refer - [https://github.com/AzureAD/azure-activedirectory-library-for-js/blob/dev/lib/adal.js](https://github.com/AzureAD/azure-activedirectory-library-for-js/blob/dev/lib/adal.js)
 
 **Step 3: Secure individual routes**
