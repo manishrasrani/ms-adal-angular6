@@ -17,14 +17,14 @@ export class MsAdalAngular6Service {
     this.handleCallback();
   }
 
-  public get LoggedInUserEmail() {
+  public get loggedInUserEmail() {
     if (this.isAuthenticated) {
       return this.context.getCachedUser().userName;
     }
     return '';
   }
 
-  public get LoggedInUserName() {
+  public get loggedInUserName() {
     if (this.isAuthenticated) {
       return this.context.getCachedUser().profile.name;
     }
@@ -39,7 +39,7 @@ export class MsAdalAngular6Service {
     this.context.logOut();
   }
 
-  public GetResourceForEndpoint(url: string): string {
+  public getResourceForEndpoint(url: string): string {
     let resource = null;
     if (url) {
       resource = this.context.getResourceForEndpoint(url);
@@ -50,8 +50,8 @@ export class MsAdalAngular6Service {
     return resource;
   }
 
-  public RenewToken(url: string) {
-    let resource = this.GetResourceForEndpoint(url);
+  public renewToken(url: string) {
+    let resource = this.getResourceForEndpoint(url);
     return this.context.clearCacheForResource(resource); // Trigger the ADAL token renew 
   }
 
@@ -69,7 +69,7 @@ export class MsAdalAngular6Service {
     function acquireTokenInternal(cb: any) {
       let s: string = null;
       let resource: string;
-      resource = _this.GetResourceForEndpoint(url);
+      resource = _this.getResourceForEndpoint(url);
 
       _this.context.acquireToken(resource, (error: string, tokenOut: string) => {
         if (error) {
