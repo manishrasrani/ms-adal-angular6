@@ -123,13 +123,13 @@ Based on your application needs you could use the below supported properties and
 this.adalSvc.userInfo // Gives you the complete user object with various properties about the logged in user
 ```
 ```bash
-this.adalSvc.LoggedInUserEmail // Gets the LoggedInUserEmail
+this.adalSvc.loggedInUserEmail // Gets the user email
 ```
 ```bash
-this.adalSvc.LoggedInUserName // Gets the LoggedInUserName
+this.adalSvc.loggedInUserName // Gets the username
 ```
 ```bash
-this.adalSvc.RenewToken() // Renews the AAD token
+this.adalSvc.renewToken() // Renews the AAD token
 ```
 ```bash
 this.adalSvc.logout() // Logs out the signed in user
