@@ -1,5 +1,5 @@
 /// <reference path='./../../../node_modules/@types/adal/index.d.ts'/>
-import { Injectable, Inject } from '@angular/core';
+import { Injectable, Inject, NgZone } from '@angular/core';
 import { Observable, bindCallback } from 'rxjs';
 import * as adalLib from 'adal-angular';
 
@@ -9,7 +9,10 @@ import * as adalLib from 'adal-angular';
 export class MsAdalAngular6Service {
   private context: adal.AuthenticationContext;
 
-  constructor(@Inject('adalConfig') private adalConfig: any) {
+  constructor(
+    @Inject('adalConfig') private adalConfig: any,
+    private readonly ngZone: NgZone
+  ) {
     if (typeof adalConfig === 'function') {
       this.adalConfig = adalConfig();
     } 
@@ -56,7 +59,7 @@ export class MsAdalAngular6Service {
   }
 
   public acquireToken(url: string) {
-    const _this = this;   // save outer this for inner function
+    const self = this;   // save outer this for inner function
     let errorMessage: string;
 
     return bindCallback(acquireTokenInternal, (token: string) => {
@@ -69,17 +72,19 @@ export class MsAdalAngular6Service {
     function acquireTokenInternal(cb: any) {
       let s: string = null;
       let resource: string;
-      resource = _this.GetResourceForEndpoint(url);
+      resource = self.GetResourceForEndpoint(url);
 
-      _this.context.acquireToken(resource, (error: string, tokenOut: string) => {
-        if (error) {
-          _this.context.error('Error when acquiring token for resource: ' + resource, error);
-          errorMessage = error;
-          cb(null as string);
-        } else {
-          cb(tokenOut);
-          s = tokenOut;
-        }
+      self.context.acquireToken(resource, (error: string, tokenOut: string) => {
+        self.ngZone.run(() => {
+          if (error) {
+            self.context.error('Error when acquiring token for resource: ' + resource, error);
+            errorMessage = error;
+            cb(null as string);
+          } else {
+            cb(tokenOut);
+            s = tokenOut;
+          }
+        });
       });
       return s;
     }
