@@ -75,7 +75,7 @@ For a list of all available adal configuration options, refer - [https://github.
 
 **Step 3: Secure individual routes**
 
- Use the AuthenticationGuard to secure indivuadual routes in your application. This ensures that users navigating to them must be authenticated with AAD to view them.
+ Use the AuthenticationGuard to secure individual routes in your application. This ensures that users navigating to them must be authenticated with AAD to view them.
 
 Import AuthenticationGuard and add it as a provider in your root module.
 ```bash
