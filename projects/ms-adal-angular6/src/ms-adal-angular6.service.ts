@@ -1,6 +1,6 @@
 /// <reference path='./../../../node_modules/@types/adal/index.d.ts'/>
 import { Injectable, Inject } from '@angular/core';
-import { Observable, bindCallback } from 'rxjs';
+import {  bindCallback } from 'rxjs';
 import * as adalLib from 'adal-angular';
 
 @Injectable({
